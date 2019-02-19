@@ -1,7 +1,10 @@
 package com.penda.gorillaicecream
 
 import android.content.Context
+import android.graphics.PorterDuff
+import android.graphics.drawable.GradientDrawable
 import android.support.constraint.ConstraintLayout
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +29,12 @@ class CardListAdapter(private val context: Context?, private val cardList: Array
         holder.name.text = cardList[position].getName()
         holder.price.text = cardList[position].price
         holder.image.setImageDrawable(cardList[position].getMenuItemImage(context))
+        val drawable = context?.resources?.getDrawable(R.drawable.circle) as GradientDrawable
+        val colorInt = cardList[position].getColorInteger()
+        val colorString = cardList[position].bg_color
+        Log.d("colorint", "$colorInt $colorString")
+       // val d = drawable as GradientDrawable
+        drawable.setColor(colorInt)
         holder.card.setOnClickListener {
             cardClicked.postValue(cardList[position])
         }

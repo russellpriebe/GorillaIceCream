@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     val context: Context = this
     var menuItems: ArrayList<MenuItem> = ArrayList<MenuItem>()
     var orderedItems: ArrayList<MenuItem> = ArrayList<MenuItem>()
-
+    var noOfItemsOrdered = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +42,20 @@ class MainActivity : AppCompatActivity() {
         val adapter = CardListAdapter(context, menuItems)
         recyclerView.adapter = adapter
         adapter.cardClicked.observe(this, Observer { item ->
-
+            if(item.count==0){
+                orderedItems.add(item)
+            }
+            item.count++
+            noOfItemsOrdered++
+            if(item.count==3){
+                orderedItems.remove(item)
+                noOfItemsOrdered -= 2
+            }
+            if(noOfItemsOrdered==1) {
+                button.text = "Order 1 Item"
+            } else {
+                button.text = "Order $noOfItemsOrdered Items"
+            }
 
         })
 
