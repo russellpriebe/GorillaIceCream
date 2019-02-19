@@ -3,8 +3,12 @@ package com.penda.gorillaicecream
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-data class MenuItem(val name1: String, val name2: String, val price: String, val bg_color: String, val type: String) {
+@Parcelize
+data class MenuItem(val name1: String, val name2: String, val price: String, val bg_color: String, val type: String) : Parcelable {
+
     var count = 0
     fun getColorInteger(): Int {
         //val colorInt = java.lang.Long.decode(bg_color).toInt()

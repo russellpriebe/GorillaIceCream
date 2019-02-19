@@ -1,6 +1,7 @@
 package com.penda.gorillaicecream
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +15,21 @@ class MainActivity : AppCompatActivity() {
     val context: Context = this
     var menuItems: ArrayList<MenuItem> = ArrayList<MenuItem>()
     var orderedItems: ArrayList<MenuItem> = ArrayList<MenuItem>()
-    var noOfItemsOrdered = 0;
+    var noOfItemsOrdered = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupViewModel()
+        button.setOnClickListener {
+            if(noOfItemsOrdered>0) {
+                val intent = Intent(this, ReceiptActivity::class.java)
+                val mParcel = MenuOrders(orderedItems)
+                intent.putExtra("orders", mParcel)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
     private fun setupViewModel(){
         viewModel = ViewModelProviders.of(this).get(GorillaViewModel::class.java)
@@ -50,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             if(item.count==3){
                 orderedItems.remove(item)
                 noOfItemsOrdered -= 2
+                item.count=0
             }
             if(noOfItemsOrdered==1) {
                 button.text = "Order 1 Item"
