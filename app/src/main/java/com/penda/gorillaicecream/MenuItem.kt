@@ -7,9 +7,8 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class MenuItem(val name1: String, val name2: String, val price: String, val bg_color: String, val type: String) : Parcelable {
+data class MenuItem(val name1: String, val name2: String, val price: String, val bg_color: String, val type: String, var count: Int = 0) : Parcelable {
 
-    var count = 0
     fun getColorInteger(): Int {
         //val colorInt = java.lang.Long.decode(bg_color).toInt()
         return Color.parseColor(bg_color)
