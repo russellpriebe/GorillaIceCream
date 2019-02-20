@@ -20,8 +20,7 @@ object Utilities {
             var bundle: Bundle? = Bundle()
 
             try{
-                val url = URL(url)
-                httpConnection = getHttpConnection(url)
+                httpConnection = getHttpConnection(URL(url))
                 inputReader = InputStreamReader(httpConnection.inputStream)
                 bufferedReader = BufferedReader(inputReader)
                 readBuffer = StringBuffer()
@@ -62,6 +61,6 @@ object Utilities {
             return httpConnection
         }
 
-
+ //   https://prod-static-images.s3.amazonaws.com/shared/creatives/15338/1385be772f424a3cb42cd8f07747b05b.png
 
 }

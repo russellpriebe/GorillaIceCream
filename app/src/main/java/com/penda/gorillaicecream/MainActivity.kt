@@ -7,12 +7,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: GorillaViewModel
-    val context: Context = this
+    private val context: Context = this
     var menuItems: ArrayList<MenuItem> = ArrayList<MenuItem>()
     var orderedItems: ArrayList<MenuItem> = ArrayList<MenuItem>()
     var noOfItemsOrdered = 0
@@ -44,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         })
         viewModel.errorBundle.observe(this, Observer {
+            Toast.makeText(context, "Error retrieving data.", Toast.LENGTH_LONG).show()
 
         })
     }
@@ -67,10 +67,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 button.text = "Order $noOfItemsOrdered Items"
             }
-
         })
-
-
     }
 
 }

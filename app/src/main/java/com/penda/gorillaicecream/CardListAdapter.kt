@@ -1,7 +1,6 @@
 package com.penda.gorillaicecream
 
 import android.content.Context
-import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
 import android.support.constraint.ConstraintLayout
 import android.util.Log
@@ -33,7 +32,6 @@ class CardListAdapter(private val context: Context?, private val cardList: Array
         val colorInt = cardList[position].getColorInteger()
         val colorString = cardList[position].bg_color
         Log.d("colorint", "$colorInt $colorString")
-       // val d = drawable as GradientDrawable
         drawable.setColor(colorInt)
         holder.card.setOnClickListener {
             cardClicked.postValue(cardList[position])

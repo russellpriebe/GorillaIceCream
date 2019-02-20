@@ -1,16 +1,10 @@
 package com.penda.gorillaicecream
 
 import android.content.Context
-import android.graphics.drawable.GradientDrawable
-import android.support.constraint.ConstraintLayout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
-import kotlinx.android.synthetic.main.grid_item.view.*
 import kotlinx.android.synthetic.main.receipt_item.view.*
 
 class ReceiptAdapter(private val context: Context?, private val cardList: ArrayList<MenuItem>) : androidx.recyclerview.widget.RecyclerView.Adapter<ReceiptAdapter.ViewHolder>(){

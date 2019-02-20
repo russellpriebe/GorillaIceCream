@@ -7,7 +7,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.json.JSONArray
-import org.json.JSONObject
 
 class GorillaViewModel: ViewModel() {
     private val viewModelJob = Job()
