@@ -14,6 +14,7 @@ class ReceiptActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receipt)
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out)
         recyclerView2.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView2.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         val orders = intent.getParcelableExtra<MenuOrders>("orders")
